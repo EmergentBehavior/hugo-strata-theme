@@ -4,10 +4,16 @@
 	<div class="row">
 		{{ range .Site.Params.portfolio.gallery }}
 		<article class="6u 12u$(xsmall) work-item">
+
+     {{ if .image }}
+     <a href="{{ $.Site.BaseURL }}images/{{ .image }}" class="image fit thumb"><img src="{{ $.Site.BaseURL }}images/{{ .thumb }}" alt="" /></a>
+     {{ else }}
       <div class="embed video-player">
         <iframe class="youtube-player" type="text/html"  src="https://www.youtube.com/embed/{{ .vid}}?hd=1&rel=0&showinfo=0" allowfullscreen frameborder="0">
         </iframe>
       </div>
+     {{ end }}
+
       <h3>{{ .title | markdownify }}</h3>
 			<p>{{ .description | markdownify }}</p>
 		</article>
